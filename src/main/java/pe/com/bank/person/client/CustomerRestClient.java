@@ -4,9 +4,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.reactive.function.client.WebClient;
 import org.springframework.web.util.UriComponentsBuilder;
 
-import lombok.AllArgsConstructor;
 import pe.com.bank.person.entity.Customer;
-import pe.com.bank.person.repository.PersonRepository;
 import reactor.core.publisher.Mono;
 
 import org.springframework.beans.factory.annotation.Value;

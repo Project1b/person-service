@@ -2,13 +2,13 @@ package pe.com.bank.person.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import lombok.AllArgsConstructor;
@@ -20,6 +20,7 @@ import reactor.core.publisher.Mono;
 
 @AllArgsConstructor
 @RestController
+@RequestMapping("/v1")
 public class PersonController {
 
     PersonService personService;
@@ -32,24 +33,24 @@ public class PersonController {
     	return personService.addPerson(person);
     }
     
-    @GetMapping("/persons")
+    @GetMapping
     public Flux<Person> getPersons() {
     	log.info("getPersons");
         return personService.getPersons();
     }
     
-    @GetMapping("/persons/{id}")
+    @GetMapping("/{id}")
     public Mono<Person> getPersonById(@PathVariable String id){
     	log.info("getPersonById");
     	return personService.getPersonById(id);
     }
     
-    @PutMapping("/persons/{id}")
+    @PutMapping("/{id}")
     public Mono<Person> updatePerson(@RequestBody Person personUpdate, @PathVariable String id){
     	return personService.updatePerson(personUpdate, id);
     }
     
-    @DeleteMapping("/persons/{id}")
+    @DeleteMapping("/{id}")
     public Mono<Void> deletePersonById(@PathVariable String id){
     	return personService.deletePersonById(id);
     }

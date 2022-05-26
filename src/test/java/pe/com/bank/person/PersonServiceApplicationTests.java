@@ -7,9 +7,10 @@ import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
 import org.mockito.MockitoAnnotations;
 import org.mockito.runners.MockitoJUnitRunner;
+import org.springframework.boot.test.context.SpringBootTest;
 
 
-@RunWith(MockitoJUnitRunner.class)
+//@SpringBootTest
 class PersonServiceApplicationTests {
 
 	
@@ -21,7 +22,7 @@ class PersonServiceApplicationTests {
 		MockitoAnnotations.openMocks(this);
 	}
 	
-	@Test
+	//@Test
 	void mainTest() {
 				
 			String[] idTransaction = { "123456789" };

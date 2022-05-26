@@ -11,7 +11,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 @AllArgsConstructor
 @NoArgsConstructor
 @Document(collection="person")
-public class Person {
+public class PersonEntity {
 	
 	@Id
 	private String id;

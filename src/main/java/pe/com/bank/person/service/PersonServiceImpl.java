@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 import lombok.AllArgsConstructor;
 import pe.com.bank.person.client.CustomerRestClient;
 import pe.com.bank.person.entity.Customer;
-import pe.com.bank.person.entity.Person;
+import pe.com.bank.person.entity.PersonEntity;
 import pe.com.bank.person.repository.PersonRepository;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
@@ -22,22 +22,22 @@ public class PersonServiceImpl implements PersonService{
     
     private static final Logger log = LoggerFactory.getLogger(PersonServiceImpl.class);
 
-    public Mono<Person> addPerson(Person person){
+    public Mono<PersonEntity> addPerson(PersonEntity person){
     	log.info("addPerson");    	
     	return personRepository.save(person).doOnNext(personSaved -> log.info("Person id :"+person.getId()+" Saved"));
     }
     
-    public Flux<Person> getPersons(){
+    public Flux<PersonEntity> getPersons(){
     	log.info("getPersons");  
        return personRepository.findAll().doOnNext(person -> log.info("Person id :"+person.getId()));
     }
     
-    public Mono<Person> getPersonById(String id){
+    public Mono<PersonEntity> getPersonById(String id){
     	log.info("getPersonById");  
     	return personRepository.findById(id).doOnNext(person -> log.info("Person id :"+person.getId()));
     }
     
-    public Mono<Person> updatePerson(Person personUpdate, String id){
+    public Mono<PersonEntity> updatePerson(PersonEntity personUpdate, String id){
     	log.info("updatePerson"); 
     	return personRepository.findById(id).flatMap(person -> {
     			
